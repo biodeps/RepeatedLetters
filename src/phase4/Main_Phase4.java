@@ -10,8 +10,6 @@ public class Main_Phase4 {
 		System.out.println("Good morning! Please, insert your name:");
 		// Read my name as a String
 		String mydata = inputData.nextLine();
-
-		// List<String> auxList = Arrays.asList(mydata);
 		List<String> fullName = new ArrayList<String>();
 		// Convert the String to an ArrayList
 		for (int i = 0; i < mydata.length(); i++) {
