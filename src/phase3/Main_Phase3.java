@@ -4,23 +4,39 @@ import java.util.*;
 
 public class Main_Phase3 {
 
-	static boolean IsVowel(char vowel) {
+	static boolean isVowel(char vowel) {
 
 		return ("aeiouAEIOU".indexOf(vowel) != -1);
 
 	}
 
-	static String WhatIAm(char letter) {
+	static String whatIAm(char letter) {
 
 		if (Character.isDigit(letter)) {
 			return "un error: Els noms no poden contenir números!";
 		}
 
-		if (IsVowel(letter)) {
+		if (isVowel(letter)) {
 			return "vocal.";
 		}
 
 		return "consonant.";
+	}
+	
+	static void setMap (Map<String, Integer> myMap, String name, List<Character> list) {
+		
+		for (int j = 0; j < name.length(); j++) {
+			list.add(j, name.charAt(j));
+
+			if (!myMap.containsKey(Character.toString(name.charAt(j)))) {
+				myMap.put(Character.toString(name.charAt(j)), 1);
+			} else {
+				myMap.put(Character.toString(name.charAt(j)),
+						myMap.get(Character.toString(name.charAt(j))) + 1);
+			}
+
+		}
+		
 	}
 
 	public static void main(String[] args) {
@@ -29,24 +45,14 @@ public class Main_Phase3 {
 		System.out.println("Good morning! Please, insert your Name");
 		String myname = inputData.nextLine();
 
-		List<Character> mynamelist = new ArrayList<Character>();
+		
 		// LinkedHashMap inserta en el HashMap los elementos en el orden que se insertan
 		Map<String, Integer> mapName = new LinkedHashMap<String, Integer>();
-
-		for (int j = 0; j < myname.length(); j++) {
-			mynamelist.add(j, myname.charAt(j));
-
-			if (!mapName.containsKey(Character.toString(myname.charAt(j)))) {
-				mapName.put(Character.toString(myname.charAt(j)), 1);
-			} else {
-				mapName.put(Character.toString(myname.charAt(j)),
-						mapName.get(Character.toString(myname.charAt(j))) + 1);
-			}
-
-		}
-
+		List<Character> mynamelist = new ArrayList<Character>();
+		setMap(mapName, myname, mynamelist);
+	
 		for (int i = 0; i < mynamelist.size(); i++) {
-			System.out.println(mynamelist.get(i) + " és " + WhatIAm(mynamelist.get(i)));
+			System.out.println(mynamelist.get(i) + " és " + whatIAm(mynamelist.get(i)));
 		}
 
 		// Convertim les KEY del Map a una llista només per a tenir-les accessibles en

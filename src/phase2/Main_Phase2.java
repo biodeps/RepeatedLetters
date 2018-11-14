@@ -4,19 +4,19 @@ import java.util.*;
 
 public class Main_Phase2 {
 	
-	static boolean IsVowel(char vowel) {
+	static boolean isVowel(char vowel) {
 		
 		return ("aeiouAEIOU".indexOf(vowel) != -1);
 		
 	}
 
-	static String WhatIAm(char letter) {
+	static String whatIAm(char letter) {
 
 		if (Character.isDigit(letter)) {
 			return "un error: Els noms no poden contenir números!";
 		}
 
-		if (IsVowel(letter)) {
+		if (isVowel(letter)) {
 			return "vocal.";
 		}
 
@@ -36,7 +36,7 @@ public class Main_Phase2 {
 		}
 
 		for (int i = 0; i < mynamelist.size(); i++) {
-			System.out.println(mynamelist.get(i) + " és " + WhatIAm(mynamelist.get(i)));
+			System.out.println(mynamelist.get(i) + " és " + whatIAm(mynamelist.get(i)));
 		}
 		inputData.close();
 
